@@ -23,25 +23,25 @@ The goals / steps of this project are the following:
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I used gaussianblur  to reduce noise. I passed the image to canny edge detection . The area of interest was set to reduce the amount of calculation and make more accurate judgments. I used to hough conversion to find the lane.
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function. 
+First, calculate the slope of each hough line element determine the left and right sides of the lane by slope. Calculate the average slope of the left and right lanes. To reduce errors throw away below slope of |0.5|. To reduce errors remove the non-matched slope and coordinate
+Draw a lane with a slope of average by selecting random coordinates on the lane.
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![alt text][image1]
+
 
 
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+Lack the ability to distinuish shadows.
+Vulnerable to curved roads.
+Affected by vehicles running around.
 
-Another shortcoming could be ...
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
-
-Another potential improvement could be to ...
+Chek the route using the lost point of lane. To reduce noise save the privious frame and compare it to the present value.
